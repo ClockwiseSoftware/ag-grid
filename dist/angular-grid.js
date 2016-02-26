@@ -270,7 +270,7 @@ var awk;
             };
             Utils.formatWidth = function (width) {
                 if (typeof width === "number") {
-                    return width + "px";
+                    return width + '%'; //"px"; //width of table columns titles (strapping changes)
                 }
                 else {
                     return width;
@@ -400,7 +400,7 @@ var awk;
             Constants.ASC = "asc";
             Constants.DESC = "desc";
             Constants.ROW_BUFFER_SIZE = 20;
-            Constants.MIN_COL_WIDTH = 10;
+            Constants.MIN_COL_WIDTH = 1; //edited (strapping changes)
             Constants.SUM = 'sum';
             Constants.MIN = 'min';
             Constants.MAX = 'max';
@@ -3185,7 +3185,7 @@ var awk;
                 this.addCellClickedHandler();
                 this.addCellDoubleClickedHandler();
                 this.addCellNavigationHandler();
-                this.vGridCell.addStyles({ width: this.column.actualWidth + "px" });
+                this.vGridCell.addStyles({ width: this.column.actualWidth + "%" }); //"px" }); //width of table columns (strapping changes)
                 this.createParentOfValue();
                 this.populateCell();
                 if (this.eCheckbox) {
@@ -3854,7 +3854,7 @@ var awk;
                 return eRow;
             };
             RenderedRow.prototype.setMainRowWidth = function (width) {
-                this.vBodyRow.addStyles({ width: width + "px" });
+                this.vBodyRow.addStyles({ width: "100%" }); //width + "px" }); // width of table row (strapping changes)
             };
             RenderedRow.prototype.createChildScopeOrNull = function (data) {
                 if (this.gridOptionsWrapper.isAngularCompileRows()) {
@@ -6922,7 +6922,7 @@ var awk;
                 if (centerWidth < 0) {
                     centerWidth = 0;
                 }
-                this.eCenterWrapper.style.width = centerWidth + 'px';
+                this.eCenterWrapper.style.width = '100%'; //centerWidth + 'px'; //id="center" container width (strapping changes)
             };
             BorderLayout.prototype.setEastVisible = function (visible) {
                 if (this.eEastWrapper) {
@@ -6953,7 +6953,7 @@ var awk;
 (function (awk) {
     var grid;
     (function (grid) {
-        var gridHtml = '<div>' + '<!-- header -->' + '<div class="ag-header">' + '<div class="ag-pinned-header"></div><div class="ag-header-viewport"><div class="ag-header-container"></div></div>' + '</div>' + '<!-- body -->' + '<div class="ag-body">' + '<div class="ag-pinned-cols-viewport">' + '<div class="ag-pinned-cols-container"></div>' + '</div>' + '<div class="ag-body-viewport-wrapper">' + '<div class="ag-body-viewport">' + '<div class="ag-body-container"></div>' + '</div>' + '</div>' + '</div>' + '</div>';
+        var gridHtml = '<div>' + '<!-- header -->' + '<div class="ag-header">' + '<div class="ag-pinned-header"></div><div class="ag-header-viewport" style="width: 100%;"><div class="ag-header-container"></div></div>' + '</div>' + '<!-- body -->' + '<div class="ag-body">' + '<div class="ag-pinned-cols-viewport">' + '<div class="ag-pinned-cols-container"></div>' + '</div>' + '<div class="ag-body-viewport-wrapper">' + '<div class="ag-body-viewport">' + '<div class="ag-body-container"></div>' + '</div>' + '</div>' + '</div>' + '</div>';
         var gridNoScrollsHtml = '<div>' + '<!-- header -->' + '<div class="ag-header-container"></div>' + '<!-- body -->' + '<div class="ag-body-container"></div>' + '</div>';
         // wrapping in outer div, and wrapper, is needed to center the loading icon
         // The idea for centering came from here: http://www.vanseodesign.com/css/vertical-centering/
@@ -7121,7 +7121,7 @@ var awk;
                 }
             };
             GridPanel.prototype.setBodyContainerWidth = function () {
-                var mainRowWidth = this.columnModel.getBodyContainerWidth() + "px";
+                var mainRowWidth = '100%';//this.columnModel.getBodyContainerWidth() + 2 + "px"; //ag-body-container width (strapping changes)
                 this.eBodyContainer.style.width = mainRowWidth;
             };
             GridPanel.prototype.setPinnedColContainerWidth = function () {
